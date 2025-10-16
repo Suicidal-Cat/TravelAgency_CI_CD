@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "DataBase\DataBa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{A67909BE-E199-4DBC-89D7-F9D354A48309}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rrepositories", "Rrepositories\Rrepositories.csproj", "{7C78B7C2-A593-4EDA-8EC1-9C4E496D91CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Rrepositories\Repositories.csproj", "{7C78B7C2-A593-4EDA-8EC1-9C4E496D91CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Util\Util.csproj", "{E1168A46-23B3-41AD-82FB-AF7342CF6671}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util", "Util\Util.csproj", "{E1168A46-23B3-41AD-82FB-AF7342CF6671}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
