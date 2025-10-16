@@ -26,7 +26,7 @@ namespace Services.Implementation
 
         public async Task<Destination> Update(DestinationDto destination)
         {
-            var dest = await _destinationRep.Query().FirstOrDefaultAsync(d => d.Id == destination.Id);
+            var dest = await _destinationRep.FindOne(d => d.Id == destination.Id);
 
             if (dest == null)
             {
@@ -41,7 +41,7 @@ namespace Services.Implementation
 
         public async Task Delete(long id)
         {
-            var dest = await _destinationRep.Query().FirstOrDefaultAsync(d => d.Id == id);
+            var dest = await _destinationRep.FindOne(d => d.Id == id);
 
             if (dest == null)
             {
