@@ -11,7 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// database
 builder.Services.AddDbContext<AppDbContext>();
+
 //repositories
 builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
 
@@ -20,7 +22,6 @@ builder.Services.AddScoped<IDestinationService, DestinationService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ApiExceptionMiddleware>();
