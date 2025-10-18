@@ -7,6 +7,7 @@ using Services;
 using Services.Implementation;
 using Services.Interfaces;
 using System.Text;
+using TravelAgency.Helper;
 using TravelAgency.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,16 +51,20 @@ builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
 builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 
 //services
 builder.Services.AddScoped<IDestinationService, DestinationService>();
 builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Add authentication
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<IJwtUserInfo,JwtUserInfo>();
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
 

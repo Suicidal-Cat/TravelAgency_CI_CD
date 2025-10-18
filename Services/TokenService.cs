@@ -29,10 +29,10 @@ namespace Services
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.UniqueName, user.Username)
             };
 
-            // Assign role dynamically
             if (user.Username == "admin")
                 claims.Add(new Claim(ClaimTypes.Role, "admin"));
             else
@@ -42,7 +42,7 @@ namespace Services
                 issuer: jwtSettings["Issuer"],
                 audience: jwtSettings["Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["ExpiresInMinutes"])), // use minutes, not days
+                expires: DateTime.UtcNow.AddDays(Convert.ToDouble(jwtSettings["ExpiresInMinutes"])),
                 signingCredentials: credentials
             );
 
