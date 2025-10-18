@@ -33,7 +33,7 @@ namespace Services
             };
 
             // Assign role dynamically
-            if (user.Username == "admin" && user.Password == "admin")
+            if (user.Username == "admin")
                 claims.Add(new Claim(ClaimTypes.Role, "admin"));
             else
                 claims.Add(new Claim(ClaimTypes.Role, "standard"));

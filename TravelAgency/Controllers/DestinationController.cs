@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Models.Dtos;
 using Services.Interfaces;
 
@@ -6,6 +7,7 @@ namespace TravelAgency.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "admin")]
     public class DestinationController(IDestinationService destinationService) : Controller
     {
         [HttpPost]
