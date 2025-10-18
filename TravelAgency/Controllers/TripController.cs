@@ -14,7 +14,7 @@ namespace TravelAgency.Controllers
         public async Task<IActionResult> Create(AddTripDto model)
         {
            await tripService.Create(model);
-           return Ok();
+           return Ok("Succesfully create a trip.");
         }
 
         [HttpPost("{id:long}/change-time")]
@@ -22,7 +22,7 @@ namespace TravelAgency.Controllers
         public async Task<IActionResult> Update([FromRoute] long id,DateTime startDate, DateTime endDate)
         {
             await tripService.Update(id, startDate, endDate);
-            return Ok();
+            return Ok("You have succesfully updated the trip.");
         }
 
         [HttpGet("active")]

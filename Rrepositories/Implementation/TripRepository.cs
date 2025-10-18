@@ -16,7 +16,7 @@ namespace Repositories.Implementation
     {
         public async Task<List<TripDto>?> GetAllActive()
         {
-            var trips = await Query().Include(t => t.Employee).Include(t => t.Destination).Include(t => t.Reviews).Where(t => t.StartDate >= DateTime.UtcNow).ToListAsync();
+            var trips = await Query().Include(t => t.Employee).Include(t => t.Destination).Where(t => t.StartDate >= DateTime.UtcNow).ToListAsync();
 
             return mapper.Map<List<TripDto>>(trips);
         }

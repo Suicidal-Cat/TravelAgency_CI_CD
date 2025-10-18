@@ -12,6 +12,7 @@ namespace Models.Dtos
     {
         public long Id { get; set; }
         public long UserId { get; set; }
+        [Required]
         public long TripId { get; set; }
         [Required]
         public DateTime ReviewDate { get; set; }
@@ -19,6 +20,6 @@ namespace Models.Dtos
         [Required]
         [Range(1, 5)]
         public int Rating { get; set; }
-        public UserDto User { get; set; } = null!;
+        public string? Username { get; set; }
     }
 }
