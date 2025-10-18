@@ -75,6 +75,29 @@ namespace Services.Tests.TestData
             };
         }
 
+        public static Review GetReview(long id, long tripId, long userId)
+        {
+            return new Review()
+            {
+                Id = id,
+                Comment = "test" + id,
+                TripId = tripId,
+                UserId = userId,
+                Rating = 5,
+                ReviewDate = DateTime.Now,
+            };
+        }
 
+        public static ReviewDto GetReviewDto(long tripId, long userId)
+        {
+            return new ReviewDto()
+            {
+                Comment = "test" + tripId,
+                TripId = tripId,
+                UserId = userId,
+                Rating = 5,
+                ReviewDate = DateTime.Now,
+            };
+        }
     }
 }

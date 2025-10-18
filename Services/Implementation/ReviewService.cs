@@ -36,7 +36,7 @@ namespace Services.Implementation
             var review = await _reviewRepository.FindOne(r => r.UserId == userId && r.Id == reviewId);
             if(review == null)
             {
-                throw new CustomValidationException("Couldn't find a review");
+                throw new CustomValidationException("Couldn't find a review.");
             }
 
             _reviewRepository.Delete(review);
