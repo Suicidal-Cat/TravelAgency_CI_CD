@@ -11,12 +11,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// datebase
 builder.Services.AddDbContext<AppDbContext>();
+
 //repositories
 builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
+builder.Services.AddScoped<ITripRepository, TripRepository>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 //services
 builder.Services.AddScoped<IDestinationService, DestinationService>();
+builder.Services.AddScoped<ITripService, TripService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 var app = builder.Build();
