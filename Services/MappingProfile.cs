@@ -13,6 +13,13 @@ namespace Services
     {
         public MappingProfile() {
             CreateMap<Destination,DestinationDto>().ReverseMap();
+            CreateMap<Trip, AddTripDto>().ReverseMap();
+            CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<Trip, TripDto>().ReverseMap();
+            CreateMap<Booking, BookingDto>().ReverseMap();
+            CreateMap<Destination, DestinationDto>().ReverseMap();
+            CreateMap<Review, ReviewDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }
