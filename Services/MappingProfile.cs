@@ -21,6 +21,7 @@ namespace Services
             CreateMap<Review, ReviewDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, RegisterDto>().ReverseMap();
+            CreateMap<Booking, AddBookingDto>().ReverseMap();
         }
     }
 }

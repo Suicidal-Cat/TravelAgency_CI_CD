@@ -52,12 +52,14 @@ builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 
 //services
 builder.Services.AddScoped<IDestinationService, DestinationService>();
 builder.Services.AddScoped<ITripService, TripService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
+builder.Services.AddScoped<IBookingService, BookingService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
