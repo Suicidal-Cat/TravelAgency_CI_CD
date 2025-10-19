@@ -1,4 +1,5 @@
-﻿using Models.Entities;
+﻿using Models.Dtos;
+using Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace Repositories.Interfaces
 {
     public interface IBookingRepository : IBaseRepository<Booking>
     {
+        public Task<List<BookingDetailsDto>> GetBookingDetails(long userId);
     }
 }

@@ -12,5 +12,6 @@ namespace Services.Interfaces
     {
         public Task Create(AddBookingDto model);
         public Task Update(long id, BookingStatus status);
+        public Task<List<BookingDetailsDto>> GetUserBookings(long userId);
     }
 }

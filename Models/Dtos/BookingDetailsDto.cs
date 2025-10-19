@@ -1,4 +1,4 @@
-﻿using Models.Entities;
+﻿using Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,11 +6,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models.Enums;
 
 namespace Models.Dtos
 {
-    public class BookingDto
+    public class BookingDetailsDto
     {
         public long Id { get; set; }
         public long UserId { get; set; }
@@ -19,12 +18,13 @@ namespace Models.Dtos
         [Required]
         public DateTime BookingDate { get; set; }
         [Required]
-        [Range(1, 5,ErrorMessage = "You can book a trip with maximum of 5 people")]
+        [Range(1, 5, ErrorMessage = "You can book a trip with maximum of 5 people")]
         public int NumberOfPeople { get; set; }
         [Required]
         [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
         public BookingStatus Status { get; set; }
-
+        public string TripDescription { get; set; }
+        public string TripDate { get; set; }
     }
 }

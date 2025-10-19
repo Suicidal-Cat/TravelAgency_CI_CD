@@ -24,6 +24,10 @@ namespace Services
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, RegisterDto>().ReverseMap();
             CreateMap<Booking, AddBookingDto>().ReverseMap();
+            CreateMap<Booking, BookingDetailsDto>()
+                .ForMember(dest => dest.TripDate, opt => opt.MapFrom(src => (src.Trip.StartDate.Date + " " + src.Trip.EndDate.Date) ?? ""))
+                .ForMember(dest => dest.TripDescription, opt => opt.MapFrom(src => src.Trip.Description ?? ""))
+                .ReverseMap();
         }
     }
 }
