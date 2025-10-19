@@ -115,7 +115,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+    app.Urls.Add($"https://*:{port}");
+    app.Urls.Add($"http://*:{port}");
+}
+
 
 app.UseAuthentication();
 app.UseAuthorization();
