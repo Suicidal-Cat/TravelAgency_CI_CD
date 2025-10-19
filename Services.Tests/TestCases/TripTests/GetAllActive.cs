@@ -35,12 +35,20 @@ namespace Services.Tests.TestCases.TripTests
                 UnitData.GetTripDto(2,DateTime.UtcNow.AddDays(1), DateTime.UtcNow.AddDays(3))
             };
 
-            _tripRep.Setup(x => x.GetAllActive()).ReturnsAsync(trips);
+            _tripRep.Setup(x => x.GetAllActive(1, 1)).ReturnsAsync(new PagedResult<TripDto>
+            {
+                Items = trips,
+                PageNumber = 1,
+                TotalPages = 1
+            });
 
-            var result = await _sut.GetAllActiveTrips();
+            var result = await _sut.GetAllActiveTrips(1, 1);
 
-            result.Should().NotBeNullOrEmpty();
-            result.Should().HaveCount(trips.Count);
+            result.Should().NotBeNull();
+            result.Items.Should().NotBeNullOrEmpty();
+            result.Items.Should().HaveCount(trips.Count);
+            result.PageNumber = 1;
+            result.TotalPages = 1;
         }
     }
 }

@@ -18,7 +18,9 @@ namespace Services
             CreateMap<Trip, TripDto>().ReverseMap();
             CreateMap<Booking, BookingDto>().ReverseMap();
             CreateMap<Destination, DestinationDto>().ReverseMap();
-            CreateMap<Review, ReviewDto>().ReverseMap();
+            CreateMap<Review, ReviewDto>()
+                .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User != null ? src.User.Username : string.Empty))
+                .ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, RegisterDto>().ReverseMap();
             CreateMap<Booking, AddBookingDto>().ReverseMap();

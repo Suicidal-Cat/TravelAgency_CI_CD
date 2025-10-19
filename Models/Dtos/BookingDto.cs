@@ -25,6 +25,5 @@ namespace Models.Dtos
         [Column(TypeName = "decimal(10,2)")]
         public decimal TotalPrice { get; set; }
         public BookingStatus Status { get; set; }
-        public TripDto? Trip { get; set; }
     }
 }

@@ -21,5 +21,6 @@ namespace Models.Dtos
         public DestinationDto Destination { get; set; } = null!;
         public EmployeeDto Employee { get; set; } = null!;
         public List<ReviewDto>? Reviews { get; set; }
+        public List<BookingDto>? Bookings { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace Services.Interfaces
     {
         public Task Create(AddTripDto model);
         public Task Update(long id, DateTime startDate, DateTime endDate);
-        public Task<List<TripDto>?> GetAllActiveTrips();
+        public Task<PagedResult<TripDto>> GetAllActiveTrips(int pageNumber, int pageSize);
+        public Task<TripDto> GetWithDetails(long tripId, long userId);
     }
 }
