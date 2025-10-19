@@ -43,6 +43,18 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// Add CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 // datebase
 builder.Services.AddDbContext<AppDbContext>();
 
@@ -95,6 +107,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ApiExceptionMiddleware>();
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {

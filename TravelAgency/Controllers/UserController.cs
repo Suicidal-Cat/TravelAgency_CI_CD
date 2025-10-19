@@ -38,5 +38,11 @@ namespace TravelAgency.Controllers
                 userId = user.Id
             });
         }
+
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            return Ok("test");
+        }
     }
 }
