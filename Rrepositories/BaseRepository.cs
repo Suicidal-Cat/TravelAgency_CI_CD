@@ -42,7 +42,7 @@ namespace Repositories
         {
             await _dbContext.SaveChangesAsync();
         }
-        private IQueryable<T> Query() => _dbSet.AsQueryable();
+        public IQueryable<T> Query() => _dbSet.AsQueryable();
 
         public async Task<T?> FindOne(Expression<Func<T, bool>> func)
         {

@@ -1,18 +1,18 @@
-﻿using System;
+﻿using Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Entities
+namespace Models.Dtos
 {
-    public class Employee
+    public class EmployeeDto
     {
         public long Id { get; set; }
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
-        public List<Trip> Trips { get; set; } = new();
     }
 }
