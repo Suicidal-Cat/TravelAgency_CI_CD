@@ -1,4 +1,7 @@
-﻿using DataBase;
+﻿using AutoMapper;
+using DataBase;
+using Microsoft.EntityFrameworkCore;
+using Models.Dtos;
 using Models.Entities;
 using Repositories.Interfaces;
 using System;
@@ -9,7 +12,13 @@ using System.Threading.Tasks;
 
 namespace Repositories.Implementation
 {
-    public class BookingRepository(AppDbContext dbContext) : BaseRepository<Booking>(dbContext), IBookingRepository
+    public class BookingRepository(AppDbContext dbContext, IMapper mapper) : BaseRepository<Booking>(dbContext), IBookingRepository
     {
+        public async Task<List<BookingDetailsDto>> GetBookingDetails(long userId)
+        {
+            var bookings = await Query().Include(b => b.Trip).Where(b => b.UserId == userId).ToListAsync();
+
+            return mapper.Map<List<BookingDetailsDto>>(bookings);
+        }
     }
 }

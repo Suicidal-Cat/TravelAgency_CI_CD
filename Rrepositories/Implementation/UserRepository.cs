@@ -1,4 +1,6 @@
 ﻿using DataBase;
+using Microsoft.EntityFrameworkCore;
+using Models.Dtos;
 using Models.Entities;
 using Repositories.Interfaces;
 using System;
@@ -11,5 +13,6 @@ namespace Repositories.Implementation
 {
     public class UserRepository(AppDbContext dbContext) : BaseRepository<User>(dbContext), IUserRepository
     {
+
     }
 }

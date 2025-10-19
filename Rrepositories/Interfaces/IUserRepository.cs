@@ -1,4 +1,5 @@
-﻿using Models.Entities;
+﻿using Models.Dtos;
+using Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

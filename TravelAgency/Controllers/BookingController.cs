@@ -26,5 +26,11 @@ namespace TravelAgency.Controllers
             await bookingService.Update(id, status);
             return Ok("You have succesfully updated the booking.");
         }
+
+        [HttpGet("user-bookings")]
+        public async Task<IActionResult> GetUserBookings()
+        {
+            return Ok(await bookingService.GetUserBookings(jwtUserInfo.GetUserId()));
+        }
     }
 }

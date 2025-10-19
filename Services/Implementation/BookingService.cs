@@ -6,6 +6,7 @@ using Repositories.Interfaces;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,11 @@ namespace Services.Implementation
             booking.Status = status;
             _bookingRepository.Update(booking);
             await _bookingRepository.SaveChanges();
+        }
+
+        public async Task<List<BookingDetailsDto>> GetUserBookings(long userId)
+        {
+            return await _bookingRepository.GetBookingDetails(userId);
         }
     }
 }
