@@ -42,7 +42,7 @@ namespace Services
                 issuer: jwtSettings["Issuer"],
                 audience: jwtSettings["Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddDays(Convert.ToDouble(jwtSettings["ExpiresInMinutes"])),
+                expires: DateTime.UtcNow.AddDays(Convert.ToDouble(jwtSettings["ExpiresInDays"])),
                 signingCredentials: credentials
             );
 

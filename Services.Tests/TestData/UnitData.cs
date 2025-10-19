@@ -1,5 +1,6 @@
 ﻿using Models.Dtos;
 using Models.Entities;
+using Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace Services.Tests.TestData
             };
         }
 
-        public static Trip GetTrip()
+        public static Trip GetTrip(DateTime? startDate = null, DateTime? endDate = null)
         {
             return new Trip()
             {
@@ -52,8 +53,9 @@ namespace Services.Tests.TestData
                 Destination = GetDestination(),
                 Employee = GetEmployee(),
                 Reviews = new List<Review>(),
-                StartDate = DateTime.Now.AddDays(3),
-                EndDate = DateTime.Now.AddDays(5)
+                StartDate = startDate != null ? (DateTime)startDate : DateTime.Now.AddDays(3),
+                EndDate = endDate != null ? (DateTime) endDate : DateTime.Now.AddDays(5),
+                Price = 20.0M,
             };
         }
 
@@ -97,6 +99,20 @@ namespace Services.Tests.TestData
                 UserId = userId,
                 Rating = 5,
                 ReviewDate = DateTime.Now,
+            };
+        }
+
+        public static Booking GetBooking(long id, long tripId, long userId, decimal price, BookingStatus status)
+        {
+            return new Booking()
+            {
+                Id = id,
+                BookingDate = DateTime.Now,
+                NumberOfPeople = 2,
+                TotalPrice = 2 * price,
+                Status = status,
+                TripId = tripId,
+                UserId = userId,
             };
         }
     }
