@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Models.Dtos;
 using Services.Interfaces;
+using TravelAgency.Helper;
 
 namespace TravelAgency.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TripController(ITripService tripService) : Controller
+    public class TripController(ITripService tripService, IJwtUserInfo jwtUserInfo) : Controller
     {
         [HttpPost]
         [Authorize(Roles = "admin")]
@@ -27,10 +28,19 @@ namespace TravelAgency.Controllers
 
         [HttpGet("active")]
         [Authorize]
-        public async Task<IActionResult> GetAllActive()
+        public async Task<IActionResult> GetAllActive([FromQuery] int pageNumber = 1)
         {
-            var result = await tripService.GetAllActiveTrips();
+            const int pageSize = 15;
+
+            var result = await tripService.GetAllActiveTrips(pageNumber, pageSize);
             return Ok(result);
+        }
+
+        [HttpGet("{id:long}")]
+        [Authorize]
+        public async Task<IActionResult> GetWithDetails([FromRoute] long id)
+        {
+            return Ok(await tripService.GetWithDetails(id, jwtUserInfo.GetUserId()));
         }
     }
 }

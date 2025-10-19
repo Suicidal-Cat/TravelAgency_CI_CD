@@ -21,7 +21,7 @@ namespace TravelAgency.Controllers
         }
 
         [HttpPost("update-status/{id:long}")]
-        public async Task<IActionResult> Create(long id, BookingStatus status)
+        public async Task<IActionResult> Update(long id, BookingStatus status)
         {
             await bookingService.Update(id, status);
             return Ok("You have succesfully updated the booking.");

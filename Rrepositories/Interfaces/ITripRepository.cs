@@ -10,6 +10,7 @@ namespace Repositories.Interfaces
 {
     public interface ITripRepository : IBaseRepository<Trip>
     {
-        public Task<List<TripDto>?> GetAllActive();
+        public Task<PagedResult<TripDto>> GetAllActive(int pageNumber, int pageSize);
+        public Task<TripDto> GetWithDetails(long tripId, long userId);
     }
 }

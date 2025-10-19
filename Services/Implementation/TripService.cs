@@ -78,9 +78,19 @@ namespace Services.Implementation
             await _tripRepository.SaveChanges();
         }
 
-        public async Task<List<TripDto>?> GetAllActiveTrips()
+        public async Task<PagedResult<TripDto>> GetAllActiveTrips(int pageNumber, int pageSize)
         {
-            return await _tripRepository.GetAllActive();
+            return await _tripRepository.GetAllActive(pageNumber, pageSize);
+        }
+
+        public async Task<TripDto> GetWithDetails(long tripId,long userId)
+        {
+            var trip = await _tripRepository.GetWithDetails(tripId, userId);
+            if (trip == null)
+            {
+                throw new CustomValidationException("Trip couldn't be found.");
+            }
+            return trip;
         }
     }
 }
