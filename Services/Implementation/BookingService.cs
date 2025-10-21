@@ -16,7 +16,7 @@ namespace Services.Implementation
 {
     public class BookingService(IBookingRepository _bookingRepository, ITripRepository _tripRepository, IMapper mapper) : IBookingService
     {
-        public async Task Create(AddBookingDto model)
+        public async Task<AddBookingDto> Create(AddBookingDto model)
         {
             var trip = await _tripRepository.FindOne(t => t.Id == model.TripId);
 
@@ -39,9 +39,12 @@ namespace Services.Implementation
 
             model.Status = BookingStatus.Pending;
             model.TotalPrice = model.NumberOfPeople * trip.Price;
+            model.BookingDate = DateTime.UtcNow.Date;
 
-            _bookingRepository.Add(mapper.Map<Booking>(model));
+            var result = _bookingRepository.Add(mapper.Map<Booking>(model));
             await _bookingRepository.SaveChanges();
+
+            return mapper.Map<AddBookingDto>(result);
         }
 
         public async Task Update(long id, BookingStatus status)
