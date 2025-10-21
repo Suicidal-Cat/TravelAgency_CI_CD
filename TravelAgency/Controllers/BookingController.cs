@@ -16,11 +16,11 @@ namespace TravelAgency.Controllers
         public async Task<IActionResult> Create(AddBookingDto model)
         {
             model.UserId = jwtUserInfo.GetUserId();
-            await bookingService.Create(model);
-            return Ok("You have succesfully booked a trip.");
+            return Ok(await bookingService.Create(model));
         }
 
         [HttpPost("update-status/{id:long}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update(long id, BookingStatus status)
         {
             await bookingService.Update(id, status);
