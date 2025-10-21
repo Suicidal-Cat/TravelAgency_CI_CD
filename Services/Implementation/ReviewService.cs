@@ -14,21 +14,25 @@ namespace Services.Implementation
 {
     public class ReviewService(IReviewRepository _reviewRepository, IMapper mapper) : IReviewService
     {
-        public async Task Create(ReviewDto model)
+        public async Task<ReviewDto> Create(ReviewDto model)
         {
+            model.ReviewDate = DateTime.UtcNow;
             var review = await _reviewRepository.FindOne(r => r.UserId == model.UserId && r.TripId == model.TripId);
+            ReviewDto result = null;
 
             if (review == null)
             {
-                _reviewRepository.Add(mapper.Map<Review>(model));
+                result = mapper.Map<ReviewDto>(_reviewRepository.Add(mapper.Map<Review>(model)));
             }
             else
             {
                 model.Id = review.Id;
                 mapper.Map(model,review);
-                _reviewRepository.Update(review);
+                result = mapper.Map<ReviewDto>(_reviewRepository.Update(review));
             }
             await _reviewRepository.SaveChanges();
+
+            return result;
         }
 
         public async Task Delete(long userId, long reviewId)

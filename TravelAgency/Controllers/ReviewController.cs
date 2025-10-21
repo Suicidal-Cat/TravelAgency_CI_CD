@@ -15,8 +15,7 @@ namespace TravelAgency.Controllers
         public async Task<IActionResult> Create(ReviewDto model)
         {
             model.UserId = jwtUserInfo.GetUserId();
-            await reviewService.Create(model);
-            return Ok("Succesfully created a review.");
+            return Ok(await reviewService.Create(model));
         }
 
         [HttpDelete("{id:long}")]

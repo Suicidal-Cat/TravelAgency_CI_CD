@@ -15,7 +15,6 @@ namespace Models.Dtos
         public long UserId { get; set; }
         [Required]
         public long TripId { get; set; }
-        [Required]
         public DateTime BookingDate { get; set; }
         [Required]
         [Range(1, 5, ErrorMessage = "You can book a trip with maximum of 5 people")]

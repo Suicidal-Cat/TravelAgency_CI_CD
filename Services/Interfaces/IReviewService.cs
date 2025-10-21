@@ -9,7 +9,7 @@ namespace Services.Interfaces
 {
     public interface IReviewService
     {
-        public Task Create(ReviewDto model);
+        public Task<ReviewDto> Create(ReviewDto model);
         public Task Delete(long userId, long reviewId);
     }
 }

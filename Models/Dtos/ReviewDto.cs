@@ -14,7 +14,6 @@ namespace Models.Dtos
         public long UserId { get; set; }
         [Required]
         public long TripId { get; set; }
-        [Required]
         public DateTime ReviewDate { get; set; }
         public string? Comment { get; set; }
         [Required]
